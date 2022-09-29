@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Bogus;
@@ -61,7 +63,14 @@ namespace NerdStore.WebApp.Tests.Config
             // Recriando o client para evitar configurações de Web
             Client = Factory.CreateClient();
 
-            var response = await Client.PostAsJsonAsync("api/login", userData);
+            var response = await Client
+                .PostAsync(
+                    "api/AgentCollection", new StringContent(
+                        JsonSerializer.Serialize(userData), Encoding.UTF8, "application/json"
+                    )
+                );
+
+
             response.EnsureSuccessStatusCode();
             UsuarioToken = await response.Content.ReadAsStringAsync();
         }

@@ -15,6 +15,7 @@ using NerdStore.Catalogo.Application.AutoMapper;
 using NerdStore.Catalogo.Data;
 using NerdStore.Vendas.Data;
 using NerdStore.WebApp.MVC.Setup;
+using Microsoft.Extensions.Hosting;
 
 namespace NerdStore.WebApp.MVC
 {
@@ -22,7 +23,7 @@ namespace NerdStore.WebApp.MVC
     {
         public IConfiguration Configuration { get; }
 
-        public StartupApiTests(IHostingEnvironment hostEnvironment)
+        public StartupApiTests(IHostEnvironment hostEnvironment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -77,7 +78,7 @@ namespace NerdStore.WebApp.MVC
                 };
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddHttpContextAccessor();
 
             services.AddAutoMapper(typeof(DomainToViewModelMappingProfile), typeof(ViewModelToDomainMappingProfile));
@@ -88,7 +89,7 @@ namespace NerdStore.WebApp.MVC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Features.Tests;
 using NerdStore.WebApp.MVC;
@@ -35,7 +37,12 @@ namespace NerdStore.WebApp.Tests
             _testsFixture.Client.AtribuirToken(_testsFixture.UsuarioToken);
 
             // Act
-            var postResponse = await _testsFixture.Client.PostAsJsonAsync("api/carrinho", itemInfo);
+            var postResponse = await _testsFixture.Client
+                .PostAsync(
+                    "api/carrinho", new StringContent(
+                        JsonSerializer.Serialize(itemInfo), Encoding.UTF8, "application/json"
+                    )
+                );
 
             // Assert
             postResponse.EnsureSuccessStatusCode();
