@@ -1,4 +1,4 @@
-﻿Funcionalidade: Usuário - Login
+﻿Funcionalidade: LoginDeUsuario
 	Como um usuario
 	Eu desejo realizar o login
 	Para que eu possa acessar as demais funcionalidades

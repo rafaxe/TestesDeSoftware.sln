@@ -1,4 +1,4 @@
-﻿Funcionalidade: Pedido - Adicionar Item ao Carrinho
+﻿Funcionalidade: AdicionarItem
 	Como um usuário
 	Eu desejo colocar um item no carrinho
 	Para que eu possa comprá-lo posteriormente

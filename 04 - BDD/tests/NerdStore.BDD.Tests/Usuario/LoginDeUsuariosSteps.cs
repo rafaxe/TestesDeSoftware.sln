@@ -6,14 +6,14 @@ using Xunit;
 
 namespace NerdStore.BDD.Tests
 {
-    [Binding]
     [CollectionDefinition(nameof(AutomacaoWebFixtureCollection))]
-    public class LoginDeUsuariosSteps
+    [Binding, Scope(Feature = "LoginDeUsuario")]
+    public class LoginDeUsuariosSteps : CommomSteps
     {
         private readonly LoginUsuarioTela _loginUsuarioTela;
         private readonly AutomacaoWebTestsFixture _testsFixture;
 
-        public LoginDeUsuariosSteps(AutomacaoWebTestsFixture testsFixture)
+        public LoginDeUsuariosSteps(AutomacaoWebTestsFixture testsFixture) : base(testsFixture)
         {
             _testsFixture = testsFixture;
             _loginUsuarioTela = new LoginUsuarioTela(testsFixture.BrowserHelper);

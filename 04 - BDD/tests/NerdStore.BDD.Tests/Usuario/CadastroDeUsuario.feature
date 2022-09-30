@@ -1,4 +1,4 @@
-﻿Funcionalidade: Usuário - Cadastro
+﻿Funcionalidade: CadastroDeUsuario
 	Como um visitante da loja
 	Eu desejo me cadastrar como usuário
 	Para que eu possa realizar compras na loja

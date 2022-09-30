@@ -5,8 +5,8 @@ using Xunit;
 
 namespace NerdStore.BDD.Tests.Pedido
 {
-    [Binding]
     [CollectionDefinition(nameof(AutomacaoWebFixtureCollection))]
+    [Binding, Scope(Feature = "AdicionarItem")]
     public class Pedido_AdicionarItemAoCarrinhoSteps
     {
         private readonly AutomacaoWebTestsFixture _testsFixture;

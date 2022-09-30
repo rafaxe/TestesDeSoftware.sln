@@ -7,7 +7,6 @@ using Xunit;
 
 namespace NerdStore.BDD.Tests.Usuario
 {
-    [Binding]
     [CollectionDefinition(nameof(AutomacaoWebFixtureCollection))]
     public class CommomSteps
     {
